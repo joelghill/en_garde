@@ -16,8 +16,10 @@ namespace En_Garde.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<en_gardeIdentityDbContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("en_gardeIdentityDbContextConnection")));
+                    // options.UseSqlServer(
+                    //     context.Configuration.GetConnectionString("en_gardeIdentityDbContextConnection")));
+                    options.UseSqlite("Data Source=local.db"));
+
 
                 services.AddDefaultIdentity<Player>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<en_gardeIdentityDbContext>();
