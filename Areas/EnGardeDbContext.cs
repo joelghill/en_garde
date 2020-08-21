@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using EnGarde.Areas.Identity.Data;
 using EnGarde.Areas.GamePlay.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EnGarde.Areas
 {
-    public class EnGardeDbContext : DbContext
+    public class EnGardeDbContext : IdentityDbContext
     {
         public EnGardeDbContext(DbContextOptions<EnGardeDbContext> options)
             : base(options)

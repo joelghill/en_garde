@@ -3,14 +3,16 @@ using System;
 using EnGarde.Areas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EnGarde.Migrations
 {
     [DbContext(typeof(EnGardeDbContext))]
-    partial class EnGardeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200821194608_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
