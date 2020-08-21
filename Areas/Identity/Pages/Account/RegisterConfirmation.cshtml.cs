@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Threading.Tasks;
-using En_Garde.Areas.Identity.Data;
+using EnGarde.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace En_Garde.Areas.Identity.Pages.Account
+namespace EnGarde.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel

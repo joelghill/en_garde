@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace En_Garde.Areas.Identity.Pages.Account.Manage
+namespace EnGarde.Areas.Identity.Pages.Account.Manage
 {
     public static class ManageNavPages
     {

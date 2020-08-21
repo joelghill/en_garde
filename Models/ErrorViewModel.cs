@@ -1,6 +1,6 @@
 using System;
 
-namespace En_Garde.Models
+namespace EnGarde.Models
 {
     public class ErrorViewModel
     {

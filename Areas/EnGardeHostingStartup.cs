@@ -1,5 +1,5 @@
 using System;
-using En_Garde.Areas.Identity.Data;
+using EnGarde.Areas.Identity.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -7,22 +7,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: HostingStartup(typeof(En_Garde.Areas.Identity.IdentityHostingStartup))]
-namespace En_Garde.Areas.Identity
+[assembly: HostingStartup(typeof(EnGarde.Areas.EnGardeHostingStartup))]
+namespace EnGarde.Areas
 {
-    public class IdentityHostingStartup : IHostingStartup
+    public class EnGardeHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<en_gardeIdentityDbContext>(options =>
+                services.AddDbContext<EnGardeDbContext>(options =>
                     // options.UseSqlServer(
-                    //     context.Configuration.GetConnectionString("en_gardeIdentityDbContextConnection")));
+                    //     context.Configuration.GetConnectionString("EnGardeIdentityDbContextConnection")));
                     options.UseSqlite("Data Source=local.db"));
 
 
                 services.AddDefaultIdentity<Player>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<en_gardeIdentityDbContext>();
+                    .AddEntityFrameworkStores<EnGardeDbContext>();
             });
         }
     }

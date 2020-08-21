@@ -2,19 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using En_Garde.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EnGarde.Areas.Identity.Data;
+using EnGarde.Areas.GamePlay.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace En_Garde.Areas.Identity.Data
+namespace EnGarde.Areas
 {
-    public class en_gardeIdentityDbContext : IdentityDbContext<Player>
+    public class EnGardeDbContext : DbContext
     {
-        public en_gardeIdentityDbContext(DbContextOptions<en_gardeIdentityDbContext> options)
+        public EnGardeDbContext(DbContextOptions<EnGardeDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Player> Players { get; set; }
+
+        public DbSet<Game> Games { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

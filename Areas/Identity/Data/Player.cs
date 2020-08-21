@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace En_Garde.Areas.Identity.Data
+namespace EnGarde.Areas.Identity.Data
 {
     // Add profile data for application users by adding properties to the Player class
     public class Player : IdentityUser

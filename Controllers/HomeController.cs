@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using En_Garde.Models;
+using EnGarde.Models;
 
-namespace En_Garde.Controllers
+namespace EnGarde.Controllers
 {
     public class HomeController : Controller
     {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using En_Garde.Areas.Identity.Data;
+using EnGarde.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-namespace En_Garde.Areas.Identity.Pages.Account.Manage
+namespace EnGarde.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {

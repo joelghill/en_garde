@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace En_Garde.Areas.Identity.Pages.Account
+namespace EnGarde.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LockoutModel : PageModel
