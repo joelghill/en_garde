@@ -138,19 +138,23 @@ namespace EnGarde.Areas.GamePlay.Data
 
         #endregion
 
+        /// <summary>
+        /// String representation of the board State
+        /// </summary>
+        /// <returns>String represtation of the game board</returns>
         public override string ToString() 
         {
             StringBuilder boardOutputBuilder = new StringBuilder();
-            char black = '⬛';
-            char white = '⬜';
-            char currentSquare = '⬜';
+            string black = "|\\\\";
+            string white = "|  ";
+            string currentSquare = white;
 
             string[] coloumns = new string[8] {"A", "B", "C", "D", "E", "F", "G", "H" };
             Type boardStateType = typeof(GameState);
 
-            for (int row = 1; row <= 8; row++) {
-                foreach (string column in coloumns){
-
+            for (int row = 8; row >= 1; row--) {
+                for (int column_index = 0; column_index <= 7; column_index++) {
+                    string column = coloumns[column_index];
                     PropertyInfo squareProperty = boardStateType.GetProperty(string.Format("{0}{1}", column, row));
                     PieceType piece = (PieceType)squareProperty.GetValue(this);
                     
@@ -159,7 +163,7 @@ namespace EnGarde.Areas.GamePlay.Data
                     {
                         boardOutputBuilder.Append(currentSquare);
                     } else {
-                        boardOutputBuilder.Append(piece);
+                        boardOutputBuilder.AppendFormat("|{0} ", (char)piece);
                     }
 
                     if (currentSquare == white) {
@@ -169,7 +173,13 @@ namespace EnGarde.Areas.GamePlay.Data
                     }
                 }
 
-                boardOutputBuilder.AppendLine();
+                boardOutputBuilder.AppendLine("|");
+
+                if (currentSquare == white) {
+                    currentSquare = black;
+                } else {
+                    currentSquare = white;
+                }
             }
 
             return boardOutputBuilder.ToString();
