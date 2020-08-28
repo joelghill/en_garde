@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using EnGarde.Areas.Identity.Data;
 
 namespace EnGarde.Areas.GamePlay.Data
@@ -11,6 +12,10 @@ namespace EnGarde.Areas.GamePlay.Data
 
         public DateTime End { get; set; }
 
-        
+        public Player White { get; set;}
+
+        public Player Black { get; set;}
+
+        public List<GameState> States { get; set; }
     }
 }
