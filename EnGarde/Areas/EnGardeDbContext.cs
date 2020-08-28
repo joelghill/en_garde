@@ -14,6 +14,7 @@ namespace EnGarde.Areas
         public EnGardeDbContext(DbContextOptions<EnGardeDbContext> options)
             : base(options)
         {
+            
         }
 
         public DbSet<Player> Players { get; set; }
