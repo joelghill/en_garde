@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -24,118 +25,140 @@ namespace EnGarde.Areas.GamePlay.Data
             this.BoardStateID = this.GenerateID();
         }
 
+        /// <summary>
+        /// Creates and initializes a new board state
+        /// </summary>
+        /// <param name="turn">The current turn</param>
+        /// <param name="pieces">Dictionary of the current pieces on the board.</param>
+        public BoardState(ChessColour turn, Dictionary<string, PieceType> pieces) {
+            this.CurrentTurn = turn;
+            Type boardStateType = this.GetType();
+            foreach (KeyValuePair<string, PieceType> entry in pieces) {
+                PropertyInfo pieceInfo = boardStateType.GetProperty(entry.Key);
+                if (pieceInfo == null) {
+                    throw new ArgumentException(
+                        string.Format("Board state does not have a property with the name \"{0}\"", entry.Key));
+                }
+                else {
+                    pieceInfo.SetValue(this, entry.Value);
+                }
+            }
+
+            this.BoardStateID = this.GenerateID();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string BoardStateID { get; set; }
+        public string BoardStateID { get; private set; }
 
         /// <summary>
         /// Gets or sets the colour to play next
         /// </summary>
-        public ChessColour CurrentTurn { get; set; }
+        public ChessColour CurrentTurn { get; private set; }
 
         #region Piece Fields
         
         #region "A" file
 
-        public PieceType A1 { get; set; }
-        public PieceType A2 { get; set; }
-        public PieceType A3 { get; set; }
-        public PieceType A4 { get; set; }
-        public PieceType A5 { get; set; }
-        public PieceType A6 { get; set; }
-        public PieceType A7 { get; set; }
-        public PieceType A8 { get; set; }
+        public PieceType A1 { get; private set; }
+        public PieceType A2 { get; private set; }
+        public PieceType A3 { get; private set; }
+        public PieceType A4 { get; private set; }
+        public PieceType A5 { get; private set; }
+        public PieceType A6 { get; private set; }
+        public PieceType A7 { get; private set; }
+        public PieceType A8 { get; private set; }
 
         #endregion
 
         #region "B" file
 
-        public PieceType B1 { get; set; }
-        public PieceType B2 { get; set; }
-        public PieceType B3 { get; set; }
-        public PieceType B4 { get; set; }
-        public PieceType B5 { get; set; }
-        public PieceType B6 { get; set; }
-        public PieceType B7 { get; set; }
-        public PieceType B8 { get; set; }
+        public PieceType B1 { get; private set; }
+        public PieceType B2 { get; private set; }
+        public PieceType B3 { get; private set; }
+        public PieceType B4 { get; private set; }
+        public PieceType B5 { get; private set; }
+        public PieceType B6 { get; private set; }
+        public PieceType B7 { get; private set; }
+        public PieceType B8 { get; private set; }
 
         #endregion
 
         #region "C" file
 
-        public PieceType C1 { get; set; }
-        public PieceType C2 { get; set; }
-        public PieceType C3 { get; set; }
-        public PieceType C4 { get; set; }
-        public PieceType C5 { get; set; }
-        public PieceType C6 { get; set; }
-        public PieceType C7 { get; set; }
-        public PieceType C8 { get; set; }
+        public PieceType C1 { get; private set; }
+        public PieceType C2 { get; private set; }
+        public PieceType C3 { get; private set; }
+        public PieceType C4 { get; private set; }
+        public PieceType C5 { get; private set; }
+        public PieceType C6 { get; private set; }
+        public PieceType C7 { get; private set; }
+        public PieceType C8 { get; private set; }
 
         #endregion
 
         #region "D" file
 
-        public PieceType D1 { get; set; }
-        public PieceType D2 { get; set; }
-        public PieceType D3 { get; set; }
-        public PieceType D4 { get; set; }
-        public PieceType D5 { get; set; }
-        public PieceType D6 { get; set; }
-        public PieceType D7 { get; set; }
-        public PieceType D8 { get; set; }
+        public PieceType D1 { get; private set; }
+        public PieceType D2 { get; private set; }
+        public PieceType D3 { get; private set; }
+        public PieceType D4 { get; private set; }
+        public PieceType D5 { get; private set; }
+        public PieceType D6 { get; private set; }
+        public PieceType D7 { get; private set; }
+        public PieceType D8 { get; private set; }
 
         #endregion
 
         #region "E" file
 
-        public PieceType E1 { get; set; }
-        public PieceType E2 { get; set; }
-        public PieceType E3 { get; set; }
-        public PieceType E4 { get; set; }
-        public PieceType E5 { get; set; }
-        public PieceType E6 { get; set; }
-        public PieceType E7 { get; set; }
-        public PieceType E8 { get; set; }
+        public PieceType E1 { get; private set; }
+        public PieceType E2 { get; private set; }
+        public PieceType E3 { get; private set; }
+        public PieceType E4 { get; private set; }
+        public PieceType E5 { get; private set; }
+        public PieceType E6 { get; private set; }
+        public PieceType E7 { get; private set; }
+        public PieceType E8 { get; private set; }
 
         #endregion
 
         #region "F" file
 
-        public PieceType F1 { get; set; }
-        public PieceType F2 { get; set; }
-        public PieceType F3 { get; set; }
-        public PieceType F4 { get; set; }
-        public PieceType F5 { get; set; }
-        public PieceType F6 { get; set; }
-        public PieceType F7 { get; set; }
-        public PieceType F8 { get; set; }
+        public PieceType F1 { get; private set; }
+        public PieceType F2 { get; private set; }
+        public PieceType F3 { get; private set; }
+        public PieceType F4 { get; private set; }
+        public PieceType F5 { get; private set; }
+        public PieceType F6 { get; private set; }
+        public PieceType F7 { get; private set; }
+        public PieceType F8 { get; private set; }
 
         #endregion
 
         #region "G" file
 
-        public PieceType G1 { get; set; }
-        public PieceType G2 { get; set; }
-        public PieceType G3 { get; set; }
-        public PieceType G4 { get; set; }
-        public PieceType G5 { get; set; }
-        public PieceType G6 { get; set; }
-        public PieceType G7 { get; set; }
-        public PieceType G8 { get; set; }
+        public PieceType G1 { get; private set; }
+        public PieceType G2 { get; private set; }
+        public PieceType G3 { get; private set; }
+        public PieceType G4 { get; private set; }
+        public PieceType G5 { get; private set; }
+        public PieceType G6 { get; private set; }
+        public PieceType G7 { get; private set; }
+        public PieceType G8 { get; private set; }
 
         #endregion
 
         #region "H" file
 
-        public PieceType H1 { get; set; }
-        public PieceType H2 { get; set; }
-        public PieceType H3 { get; set; }
-        public PieceType H4 { get; set; }
-        public PieceType H5 { get; set; }
-        public PieceType H6 { get; set; }
-        public PieceType H7 { get; set; }
-        public PieceType H8 { get; set; }
+        public PieceType H1 { get; private set; }
+        public PieceType H2 { get; private set; }
+        public PieceType H3 { get; private set; }
+        public PieceType H4 { get; private set; }
+        public PieceType H5 { get; private set; }
+        public PieceType H6 { get; private set; }
+        public PieceType H7 { get; private set; }
+        public PieceType H8 { get; private set; }
 
         #endregion
 
