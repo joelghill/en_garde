@@ -16,6 +16,6 @@ namespace EnGarde.Areas.GamePlay.Data
 
         public Player Black { get; set;}
 
-        public List<GameState> States { get; set; }
+        public List<BoardState> States { get; set; }
     }
 }
