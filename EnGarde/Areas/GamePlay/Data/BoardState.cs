@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text;
-using EnGarde.Areas.Identity.Data;
 
 namespace EnGarde.Areas.GamePlay.Data
 {
