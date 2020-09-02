@@ -16,5 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\EnGarde\en_garde.csproj" />
   </ItemGroup>
-
 </Project>

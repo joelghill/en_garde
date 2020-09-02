@@ -1,7 +1,8 @@
-using System;
-
 namespace EnGarde.Areas.GamePlay.Data
 {
+    /// <summary>
+    /// Defines an enumeration for chess piece types using UTF8 chess characters
+    /// </summary>
     public enum PieceType 
     {
         EMPTY,

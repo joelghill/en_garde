@@ -6,7 +6,20 @@ namespace EnGarde.Areas.GamePlay.Data
 {
     public class Game
     {
-        public int  ID { get; set; }
+        /// <summary>
+        /// Constructs a new game instance
+        /// </summary>
+        /// <param name="white">The White player</param>
+        /// <param name="black">The Black player</param>
+        /// <param name="initial">Initial state of the game</param>
+        public Game(Player white, Player black, GameState initial) {
+            this.Start = DateTime.UtcNow;
+            this.White = white;
+            this.Black = black;
+            this.States = new List<GameState>() { initial };
+        }
+
+        public int  GameID { get; set; }
 
         public DateTime Start { get; set; }
 
@@ -16,6 +29,6 @@ namespace EnGarde.Areas.GamePlay.Data
 
         public Player Black { get; set;}
 
-        public List<BoardState> States { get; set; }
+        public List<GameState> States { get; set; }
     }
 }
