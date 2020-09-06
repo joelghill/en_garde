@@ -1,10 +1,43 @@
 @{
     Layout = "_Layout";
 }
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div id="game_board" class="w-100" style="background-color: #eee;"></div>
+    </div>
+    <div class="col-sm-4">
+      Moves
+    </div>
+  </div>
+</div>
 
 @section Scripts
 {
-    <script src="@Url.Content("~/js/pixi.min.js")"></script>
-    <script src="@Url.Content("~/js/chess/chessUI.js")"></script>
-    <script src="@Url.Content("~/js/utility.js")"></script>
+    <script src="@Url.Content("~/js/chess/chess.js")"></script>
+    <script src="@Url.Content("~/js/chessboard-1.0.0.js")"></script>
+    <script>
+        // NOTE: this example uses the chess.js library:
+        // https://github.com/jhlywa/chess.js
+
+        var board = null
+        var game = new Chess()
+
+        function makeRandomMove () {
+            var possibleMoves = game.moves()
+
+            // exit if the game is over
+            if (game.game_over()) return
+
+            var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+            game.move(possibleMoves[randomIdx])
+            board.position(game.fen())
+                window.setTimeout(makeRandomMove, 500)
+        }
+
+        board = Chessboard('game_board', 'start')
+
+        window.setTimeout(makeRandomMove, 500)
+        $(window).resize(board.resize)
+    </script>
 }
