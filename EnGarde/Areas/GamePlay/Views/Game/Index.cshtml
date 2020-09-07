@@ -1,12 +1,14 @@
 @{
     Layout = "_Layout";
 }
-<div class="container">
-  <div class="row">
+<div id="gameplay_container" class="container mh-100">
+  <div class="row mh-100">
     <div class="col-sm-8">
-      <div id="game_board" class="w-100" style="background-color: #eee;"></div>
+      <div id="game_board" class="w-100" style="background-color: #eee;">
+        
+      </div>
     </div>
-    <div class="col-sm-4">
+    <div id="png_container" class="mh-100 col-sm-4" style="overflow: scroll;">
       Moves
     </div>
   </div>
@@ -20,8 +22,13 @@
         // NOTE: this example uses the chess.js library:
         // https://github.com/jhlywa/chess.js
 
-        var board = null
-        var game = new Chess()
+        let board = null
+        let game = new Chess()
+
+        function onMoveEnd (oldPos, newPos) {
+            $('#png_container').html(game.pgn({ max_width: 5, newline_char: '<br />' }))
+        }
+
 
         function makeRandomMove () {
             var possibleMoves = game.moves()
@@ -35,9 +42,18 @@
                 window.setTimeout(makeRandomMove, 500)
         }
 
-        board = Chessboard('game_board', 'start')
+        var config = {
+            position: 'start',
+            onMoveEnd: onMoveEnd
+        }
+
+        board = Chessboard('game_board', config)
 
         window.setTimeout(makeRandomMove, 500)
-        $(window).resize(board.resize)
+        $(window).resize(function() {
+          board.resize();
+          $('#png_container').height($('#game_board').height());
+        })
+
     </script>
 }
